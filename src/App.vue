@@ -1,8 +1,11 @@
 <template>
-  <p>Hello world</p>
+  <NavBar />
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
+import NavBar from "./components/NavBar.vue";
+
+
 
 </script>
 
