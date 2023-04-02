@@ -1,25 +1,47 @@
 <template>
-    <div>
-        <!-- <img :src="j" alt="image">
+    <!-- <div class="header-card">
+        <div>
+            <img :src="img" alt="image">
+        </div>
+
         <h2> {{ headerText }} </h2>
-        <p> {{ paragText }} </p> -->
-    </div>
+        <p> {{ paragText }} </p>
+    </div> -->
+    <img :src="img" alt="image">
 </template>
 
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
 
-export default defineComponent({
-    props: ["img", "headerText", "paragText"],
-    setup(prop) {
-        console.log(prop.headerText, prop.paragText)
-    }
-})
+defineProps(["img"]);
 
 </script>
 
 
 <style scoped lang="scss">
+// .header-card {
+//     width: 282px;
+//     height: 270px;
+//     background: #FFFFFF;
+//     // background: #000;
+//     box-shadow: 0px 1.03704px 2.47917px rgba(0, 0, 0, 0.052963);
+//     border-radius: 10px;
 
+//     > div {
+//         width: 60px;
+//         height: 60px;
+//         background: #ECEEFF;
+//         border-radius: 50%;
+//         // display: flex;
+//         // justify-content: center;
+//         // align-items: center;
+//         // text-align: center;
+
+//         > img {
+//             width: 50px;
+//             height: 50px;
+//             background: #000;
+//         }
+//     }
+// }
 </style>
