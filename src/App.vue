@@ -74,7 +74,9 @@
 
   </main>
 
-  <div></div>
+  <div class="bg_irr">
+    <img src="./assets/irregular.png" alt="image">
+  </div>
 
   <header>
 
@@ -93,17 +95,69 @@
 
 
     <div>
-      
+      <HeaderCard :img="img1" />
+      <HeaderCard :img="img1" />
+      <HeaderCard :img="img1" />
+      <HeaderCard :img="img1" />
+      <HeaderCard :img="img1" />
+      <HeaderCard :img="img1" />
     </div>
 
   </header>
 
 
+  <section class="sec_1">
+    <div>
+      <h3>How it Works?</h3>
+      <p>Resolving neglected sir tolerably but existence conveying for. Day his put off unaffected literature partiality inhabiting.</p>
+
+      <img src="./assets/Card1.png" alt="image">
+    </div>
+
+    <div>
+      <img src="./assets/Card2.png" alt="image">
+      <img src="./assets/Card3.png" alt="image">
+
+      <img src="./assets/irregular2.png" alt="image">
+    </div>
+  </section>
+
+  <div class="arrow_up">
+    <img src="./assets/Abstract2.png" alt="image">
+  </div>
+
+  <section class="product_header">
+    <div>
+      <h3>Our plans scale with your product</h3>
+      <p>in virtual space through communication platforms.</p>
+    </div>
+
+    <div>
+      <img src="./assets/product-card.png" alt="image">
+      <img src="./assets/product-card2.png" alt="image">
+      <img src="./assets/product-card3.png" alt="image">
+    </div>
+  </section>
+
+  <section class="reviews">
+    <div>
+      <h3>What Our Clients Say About Us</h3>
+      <p>Community development is often linked with community work or community planning, and may involve stakeholders, foundations.</p>
+    </div>
+
+    <div>
+
+    </div>
+  </section>
+
 </template>
 
 <script setup lang="ts">
 import NavBar from "./components/NavBar.vue";
+import HeaderCard from "@/components/HeaderCard.vue";
 
+
+const img1 = new URL("./assets/header1.png", import.meta.url);
 
 
 </script>
@@ -117,7 +171,7 @@ import NavBar from "./components/NavBar.vue";
 
 body {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  background-color: white;
+  background-color:white;
 }
 
 main {
@@ -127,6 +181,17 @@ main {
   // background-size: contain;
 }
 
+
+.bg_irr {
+  width: 100%;
+  position: absolute;
+  z-index: -100;
+  top: 270px;
+
+  img {
+    width: 100%;
+  }
+}
 
 .header_container {
   display: flex;
@@ -350,6 +415,142 @@ header {
       left: 50%;
       transform: translateX(-50%);
       margin-top: 20px;
+    }
+  }
+
+  > div:nth-child(3) {
+    margin-top: 70px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 180px;
+    gap: 20px;
+  }
+}
+
+.sec_1 {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin-top: 150px;
+  position: relative;
+
+  > div:first-child, > div:nth-child(2) {
+    position: relative;
+    z-index: 100;
+
+    img {
+      width: 100%;
+      text-align: start;
+    }
+  }
+
+  > div:first-child {
+    width: 420px;
+
+    h3 {
+      text-align: center;
+      font-size: 60px;
+      background: linear-gradient(89.97deg, #AE67FA 1.84%, #F49867 102.67%), #3E4581;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    p {
+      font-style: normal;
+      font-weight: 500;
+      color: #3E4581;
+      margin: 30px 0;
+    }
+  }
+
+  > div:nth-child(2) {
+    position: relative;
+    width: 400px;
+    text-align: start;
+
+    img:nth-child(3) {
+      // display: none;
+      position: absolute;
+      left: 132px;
+      z-index: -100;
+      top: 200px;
+      // background: #000;
+      // width: 300px;
+    }
+  }
+}
+
+.arrow_up {
+  position: relative;
+  top: -100px;
+}
+
+.product_header {
+  margin-top: -120px;
+  
+  > div:first-child {
+
+    h3 {
+      text-align: center;
+      background: linear-gradient(89.97deg, #AE67FA 1.84%, #F49867 102.67%), #3E4581;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 60px;
+      width: 720px;
+      margin: auto;
+    }
+
+    p {
+      text-align: center;
+      color: #3E4581;
+      font-size: 20px;
+      margin-top: 20px;
+    }
+  }
+
+  > div:last-child {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 20px;
+    margin-top: 80px;
+
+    img {
+      width: 300px;
+    }
+  }
+}
+
+.reviews {
+  margin-top: 150px;
+
+  > div:first-child {
+    
+    h3 {
+      text-align: center;
+      background: linear-gradient(89.97deg, #AE67FA 1.84%, #F49867 102.67%), #3E4581;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 60px;
+      width: 720px;
+      margin: auto;
+    }
+
+    p {
+      text-align: center;
+      color: #3E4581;
+      font-size: 20px;
+      margin-top: 20px;
+      width: 600px;
+      margin: {
+        left: auto;
+        right: auto;
+      }
     }
   }
 }
