@@ -141,24 +141,160 @@
 
   <section class="reviews">
     <div>
-      <h3>What Our Clients Say About Us</h3>
+      <h3 ref="h3">What Our Clients Say About Us</h3>
       <p>Community development is often linked with community work or community planning, and may involve stakeholders, foundations.</p>
     </div>
 
     <div>
+      <div ref="slides">
+        <ReviewsCard />
+        <ReviewsCard />
+        <ReviewsCard />
+        <ReviewsCard />
+        <ReviewsCard />
+      </div>
+    </div>
 
+    <section>
+      <img src="./assets/faded-bg.png" alt="image">
+    </section>
+
+    <div>
+      <svg ref="prev" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+      </svg>
+
+      <div>
+        <svg ref="next" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+        </svg>
+      </div>
     </div>
   </section>
 
+  
+  <section class="last_section">
+    <div>
+      <div>
+        <h2>25,356</h2>
+        <p>Projects Done</p>
+      </div>
+
+      <div>
+        <h2>1M+</h2>
+        <p>Projects Done</p>
+      </div>
+      
+      <div>
+        <h2>95%</h2>
+        <p>Happy Customers</p>
+      </div>
+    </div>
+
+    <div>
+      <h2>Want to start a Project With us?</h2>
+      <p>Warrant present garrets limited cordial in inquiry to. Supported me sweetness behaviour shameless excellent so arranging.</p>
+
+      <button>Get Started</button>
+    </div>
+  </section>
+
+
+  <section class="end">
+    <h2>Social Media Its Ways Of Our Excellence.</h2>
+
+    <div>
+      <input type="text" placeholder="Enter your Email">
+      <button>
+        <p>Get started</p> 
+        <div>
+          <svg ref="next" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+        </svg>
+        </div>
+      </button>
+    </div>
+
+
+    <div>
+      <img src="./assets/video.png" alt="image">
+      <p>Watch our video</p>
+    </div>
+  </section>
+
+
+  <footer>
+    <div>
+      <div class="logo">
+        <img src="./assets/logo.png" alt="logo">
+        <p>Brands.io</p>
+      </div>
+
+      <div class="headers">
+        <p>Home</p>
+        <p>About Us</p>
+        <p>Services</p>
+        <p>Contact Us</p>
+      </div>
+
+      <div>
+        <img src="./assets/social-icon.png" alt="image">
+      </div>
+
+      <img src="./assets/decorator.png" alt="image">
+    </div>
+
+    <div></div>
+
+    <p>Copyright © Brands.io creative</p>
+  </footer>
+
 </template>
 
-<script setup>
+<script setup lang="ts">
 import NavBar from "@/components/NavBar.vue";
 import HeaderCard from "@/components/HeaderCard.vue";
+import ReviewsCard from "@/components/Reviews.vue";
+import { onMounted, ref } from "vue";
 
 
 const img1 = new URL("./assets/header1.png", import.meta.url);
+const slides = ref<HTMLDivElement>(null!);
+const h3 = ref<HTMLDivElement>(null!);
+const next = ref<HTMLButtonElement>(null!);
+const prev = ref<HTMLButtonElement>(null!);
 
+let index = 0;
+
+
+onMounted(() => {
+
+  slides.value.addEventListener("transitionend", checkIndex);
+
+  next.value.addEventListener("click", () => {
+    index++;
+    slides.value.classList.add("transition")
+    slides.value.style.left = `${slides.value.offsetLeft - 450}px`
+  });
+
+  prev.value.addEventListener("click", () => {
+    index--;
+    slides.value.classList.add("transition")
+    slides.value.style.left = `${slides.value.offsetLeft + 450}px`
+  });
+
+  function checkIndex() {
+    if (index === 4) {
+      slides.value.style.left = "0px"
+      index = 0;
+    }
+
+    if (index === -1) {
+      slides.value.style.left = `-${4 * 450}px`
+      index = 0;
+    }
+  }
+})
 
 </script>
 
@@ -527,6 +663,7 @@ header {
 
 .reviews {
   margin-top: 150px;
+  position: relative;
 
   > div:first-child {
     
@@ -552,6 +689,289 @@ header {
         right: auto;
       }
     }
+  }
+
+  > div:nth-child(2) {
+    // background: #000;
+    overflow: hidden;
+    // margin-top: 60px;
+    position: relative;
+    padding: 50px 0;
+
+    > div:first-child {
+      position: relative;
+      left: 0;
+      width: 2000px;
+      display: flex;
+      gap: 20px;
+      
+      &.transition {
+        transition: all 0.5s;
+      }
+      // background: orangered;
+    }
+  }
+
+  > section {
+    position: absolute;
+    top: 150px;
+    width: 200px;
+    // left: 50px;
+    // background: #000;
+    // display: none;
+
+    > img {
+      width: 100%;
+    }
+  }
+
+  > div:last-child {
+    background: #FFFFFF;
+    box-shadow: inset 0px 1px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+    width: 100px;
+    height: 40px;
+    margin: {
+      left: auto;
+      right: auto;
+      top: 10px;
+    }
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    > div {
+      width: 30px;
+      height: 30px;
+      background: linear-gradient(89.97deg, #AE67FA 1.84%, #F49867 102.67%), linear-gradient(106.23deg, #4EF0F0 0%, #05C580 100%);
+      box-shadow: 0px 8px 15px rgba(72, 72, 138, 0.08);
+      border-radius: 40px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    svg {
+      width: 20px;
+      cursor: pointer;
+
+      &:first-child {
+        color: #AE68FA;
+      }
+
+      &:last-child {
+        color: white;
+      }
+    }
+  }
+}
+
+
+.last_section {
+  background: #F8F3FF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px 150px;
+  margin-top: 150px;
+
+  h2 {
+    font-size: 60px;
+    text-align: center;
+    background: linear-gradient(89.97deg, #AE67FA 1.84%, #F49867 102.67%), #3E4581;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  p {
+    text-align: center;
+    color: #3E4581;
+    font-size: 20px;
+    margin-top: 20px;
+  }
+
+  > div {
+    width: 100%;
+  }
+
+  > div:first-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  > div:nth-child(2) {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    p {
+      width: 600px;
+    }
+
+    button {
+      width: 198px;
+      height: 58px;
+      background: linear-gradient(89.97deg, #AE67FA 1.84%, #F49867 102.67%), linear-gradient(106.23deg, #4EF0F0 0%, #05C580 100%);
+      border-radius: 5px;
+      border: none;
+      color: white;
+      margin-top: 30px;
+      cursor: pointer;
+    }
+  }
+}
+
+
+.end {
+  margin-top: 120px;
+
+  h2 {
+    font-size: 52px;
+    text-align: center;
+    background: linear-gradient(89.97deg, #AE67FA 1.84%, #F49867 102.67%), #3E4581;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    width: 600px;
+    margin: auto;
+  }
+
+  > div:nth-child(2) {
+    background: #1C1E32;
+    box-shadow: inset 0px 1px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    width: 445px;
+    height: 73px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: {
+      left: auto;
+      right: auto;
+      top: 80px;
+    }
+    padding: 5px 10px;
+
+    input {
+      background: transparent;
+      height: 100%;
+      width: 50%;
+      border: none;
+      outline: none;
+      color: #9F9FAC;
+
+      &::placeholder {
+        color: #9F9FAC;
+      }
+    }
+
+    button {
+      background: linear-gradient(89.97deg, #AE67FA 1.84%, #F49867 102.67%), linear-gradient(106.23deg, #4EF0F0 0%, #05C580 100%);
+      box-shadow: 0px 12px 25px rgba(207, 80, 74, 0.1);
+      border-radius: 6px;
+      border: none;
+      width: 50%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+
+      p {
+        color: white;
+        position: relative;
+        left: 30%;
+        transform: translateX(-50%);
+        text-align: center;
+      }
+
+      > div {
+        width: 70px;
+        background: #FFFFFF;
+        opacity: 0.5;
+        border-radius: 6px;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+
+        svg {
+          width: 30px;
+        }
+      }
+    }
+  }
+
+  > div:nth-child(3) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+    gap: 10px;
+    text-decoration-line: underline;
+    color: #3E4581;
+  }
+}
+
+footer {
+  margin-top: 100px;
+  padding: 0 100px;
+
+  > div:first-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+
+      img {
+        width: 30px;
+        height: 34px;
+      }
+
+      p {
+        color: #3E4581;
+        font-weight: 700;
+      }
+    }
+
+    .headers {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 60px;
+
+      p {
+        font-weight: 500;
+        font-size: 14px;
+        cursor: pointer;
+        color: #3E4581;
+      }
+    }
+  }
+
+  > div:nth-child(2) {
+    width: 100%;
+    border: 1px solid #3A3A3A;
+    margin-top: 30px;
+  }
+
+  > p {
+    text-align: center;
+    color: #ADADAD;
+    font-size: 12px;
+    margin-top: 30px;
+    margin-bottom: 20px;
   }
 }
 
