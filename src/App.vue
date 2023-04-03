@@ -95,12 +95,12 @@
 
 
     <div>
-      <HeaderCard :img="img1" />
-      <HeaderCard :img="img1" />
-      <HeaderCard :img="img1" />
-      <HeaderCard :img="img1" />
-      <HeaderCard :img="img1" />
-      <HeaderCard :img="img1" />
+      <img src="./assets/header1.png" alt="image">
+      <img src="./assets/header2.png" alt="image">
+      <img src="./assets/header3.png" alt="image">
+      <img src="./assets/header4.png" alt="image">
+      <img src="./assets/header5.png" alt="image">
+      <img src="./assets/header6.png" alt="image">
     </div>
 
   </header>
@@ -207,10 +207,11 @@
       <input type="text" placeholder="Enter your Email">
       <button>
         <p>Get started</p> 
+
         <div>
-          <svg ref="next" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-        </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
         </div>
       </button>
     </div>
@@ -253,7 +254,7 @@
 
 <script setup lang="ts">
 import NavBar from "@/components/NavBar.vue";
-import HeaderCard from "@/components/HeaderCard.vue";
+// import HeaderCard from "@/components/HeaderCard.vue";
 import ReviewsCard from "@/components/Reviews.vue";
 import { onMounted, ref } from "vue";
 
@@ -268,14 +269,17 @@ let index = 0;
 
 
 onMounted(() => {
+  // alert(innerWidth)
 
   slides.value.addEventListener("transitionend", checkIndex);
+
 
   next.value.addEventListener("click", () => {
     index++;
     slides.value.classList.add("transition")
     slides.value.style.left = `${slides.value.offsetLeft - 450}px`
   });
+
 
   prev.value.addEventListener("click", () => {
     index--;
@@ -284,14 +288,16 @@ onMounted(() => {
   });
 
   function checkIndex() {
-    if (index === 4) {
+    if (index >= 4) {
       slides.value.style.left = "0px"
       index = 0;
     }
 
-    if (index === -1) {
-      slides.value.style.left = `-${4 * 450}px`
+    if (index <= -1) {
+      // slides.value.style.left = `-${3 * 450}px`
+      slides.value.style.left = `0px`
       index = 0;
+      // return;
     }
   }
 })
@@ -308,6 +314,7 @@ onMounted(() => {
 body {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   background-color:white;
+  overflow-x: hidden;
 }
 
 main {
@@ -333,9 +340,14 @@ main {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
   position: relative;
   padding-left: 100px;
   transform: translateY(-70px);
+
+  @media (max-width: 1365px) {
+    padding-left: 0px;
+  }
 }
 
 .btn_con {
@@ -481,7 +493,7 @@ main {
 
   > div:nth-child(2) {
     width: 100%;
-    height: 112.94px;
+    height: 100px;
     background: #FFFFFF;
     box-shadow: 0px 56px 63px rgba(0, 0, 0, 0.22);
     border-radius: 10px;
@@ -489,6 +501,7 @@ main {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
+    margin-top: 20px;
 
 
     > p {
@@ -527,7 +540,9 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    flex-wrap: wrap;
     padding: 0 10px;
+    gap: 20px;
   }
 
   > div:nth-child(2) {
@@ -551,6 +566,11 @@ header {
       left: 50%;
       transform: translateX(-50%);
       margin-top: 20px;
+
+      @media (max-width: 625px) {
+        width: fit-content;
+        padding: 0 5px;
+      }
     }
   }
 
@@ -569,6 +589,8 @@ header {
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
   margin-top: 150px;
   position: relative;
 
@@ -638,6 +660,15 @@ header {
       font-size: 60px;
       width: 720px;
       margin: auto;
+
+      @media (max-width: 745px) {
+        width: fit-content;
+        padding: 0 10px;
+      }
+
+      @media (max-width: 605px) {
+        font-size: 50px;
+      }
     }
 
     p {
@@ -652,6 +683,8 @@ header {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
     padding: 0 20px;
     margin-top: 80px;
 
@@ -676,6 +709,15 @@ header {
       font-size: 60px;
       width: 720px;
       margin: auto;
+
+      @media (max-width: 720px) {
+        width: fit-content;
+        padding: 0 5px;
+      }
+
+      @media (max-width: 540px) {
+        font-size: 50px;
+      }
     }
 
     p {
@@ -687,6 +729,11 @@ header {
       margin: {
         left: auto;
         right: auto;
+      }
+
+      @media (max-width: 605px) {
+        width: fit-content;
+        padding: 0 10px;
       }
     }
   }
@@ -774,7 +821,7 @@ header {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 30px 150px;
+  padding: 60px 150px;
   margin-top: 150px;
 
   h2 {
@@ -920,12 +967,13 @@ header {
 }
 
 footer {
-  margin-top: 100px;
+  margin-top: 120px;
   padding: 0 100px;
+  position: relative;
 
   > div:first-child {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 
     .logo {
@@ -958,12 +1006,20 @@ footer {
         color: #3E4581;
       }
     }
+
+    > img {
+      position: absolute;
+      right: 0;
+      transform: translateY(-100px);
+    }
   }
 
   > div:nth-child(2) {
-    width: 100%;
+    width: 85%;
     border: 1px solid #3A3A3A;
     margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   > p {
