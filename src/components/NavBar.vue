@@ -5,18 +5,59 @@
             <p>Brands.io</p>
         </div>
 
-        <div class="headers">
+        <div ref="header" class="headers">
             <p>Home</p>
             <p>About Us</p>
             <p>Services</p>
             <p>Contact Us</p>
+
+            <svg ref="close" class="close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
         </div>
 
         <div>
             <button>Login</button>
         </div>
+
+        <p ref="open" class="open">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+        </p>
     </nav>
 </template>
+
+
+<script setup lang="ts">
+import { onMounted, ref } from "vue";
+
+
+const open = ref<HTMLDivElement>(null!);
+const close = ref<HTMLDivElement>(null!);
+const header = ref<HTMLDivElement>(null!);
+
+
+onMounted(() => {
+
+    document.addEventListener("click", (e) => {
+        if (!open.value.contains(e.target as Node) && !header.value.contains(e.target as Node)) {
+            header.value.style.right = "-100%";
+        }
+    });
+
+    open.value.addEventListener("click", () => {
+        header.value.style.right = "0";
+    });
+
+
+    close.value.addEventListener("click", () => {
+        header.value.style.right = "-100%";
+    });
+
+});
+
+</script>
 
 
 
@@ -51,6 +92,20 @@ nav {
     justify-content: space-between;
     align-items: center;
     gap: 60px;
+    transition: all 1s;
+
+    @media (max-width: 670px) {
+        background: #E5E5E5;
+        flex-direction: column;
+        position: fixed;
+        right: -100%;
+        top: 0;
+        height: 100%;
+        gap: 90px;
+        justify-content: center;
+        width: 300px;
+        z-index: 100000;
+    }
 
     p {
         font-weight: 500;
@@ -64,6 +119,10 @@ nav {
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+
+        @media (max-width: 670px) {
+            font-size: 20px;
+        }
     }
 }
 
@@ -74,6 +133,22 @@ button {
     width: 100px;
     height: 48px;
     color: white;
+}
+
+svg {
+    width: 30px;
+    cursor: pointer;
+    display: none;
+
+    @media (max-width: 670px) {
+        display: block;
+    }
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
 }
 
 </style>
