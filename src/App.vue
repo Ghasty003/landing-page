@@ -2,6 +2,8 @@
   <main class="parent">
     <NavBar />
 
+    <img class="bg" src="./assets/Lines.png" alt="">
+
     <img src="./assets/Abstract.png" alt="image">
 
     <div class="header_container">
@@ -277,14 +279,14 @@ onMounted(() => {
   next.value.addEventListener("click", () => {
     index++;
     slides.value.classList.add("transition")
-    slides.value.style.left = `${slides.value.offsetLeft - 450}px`
+    slides.value.style.left = `${slides.value.offsetLeft - 400}px`
   });
 
 
   prev.value.addEventListener("click", () => {
     index--;
     slides.value.classList.add("transition")
-    slides.value.style.left = `${slides.value.offsetLeft + 450}px`
+    slides.value.style.left = `${slides.value.offsetLeft + 400}px`
   });
 
   function checkIndex() {
@@ -317,12 +319,20 @@ body {
   overflow-x: hidden;
 }
 
-main {
-  background-image: url("./assets/Lines.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  // background-size: contain;
+.bg {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: -10000;
 }
+
+// main {
+//   background-image: url("./assets/Lines.png");
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   background-origin: content-box;
+// }
 
 
 .bg_irr {
@@ -341,18 +351,27 @@ main {
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
+  gap: 20px;
   position: relative;
   padding-left: 100px;
+  padding-right: 20px;
   transform: translateY(-70px);
 
   @media (max-width: 1365px) {
-    padding-left: 0px;
+    padding-left: 20px;
+  }
+
+  @media (max-width: 861px) {
+    margin-top: 100px;
   }
 }
 
 .btn_con {
-  // background: #000;
   width: 500px;
+
+  @media (max-width: 541px) {
+    padding-left: 40px;
+  }
   
   h2 {
     font-size: 85px;
@@ -361,12 +380,20 @@ main {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     line-height: 88px;
+
+    @media (max-width: 541px) {
+      font-size: 60px;
+    }
   }
 
   p {
     font-size: 20px;
     color: #3E4581;
     margin: 40px 0;
+
+    @media (max-width: 541px) {
+      font-size: 18px;
+    }
   }
 
 
@@ -396,9 +423,13 @@ main {
 }
 
 .profile-con {
-  // background-color: red;
   position: relative;
   width: 350px;
+
+  @media (max-width: 748px) {
+    margin-top: 40px;
+    margin-bottom: 200px;
+  }
 
   > img {
     transform: translate(-20px, 250px);
@@ -644,6 +675,11 @@ header {
 .arrow_up {
   position: relative;
   top: -100px;
+
+  @media (max-width: 860px) {
+    top: 0;
+    margin: 100px 0;
+  }
 }
 
 .product_header {
@@ -824,6 +860,10 @@ header {
   padding: 60px 150px;
   margin-top: 150px;
 
+  @media (max-width: 1020px) {
+    padding: 60px 50px;
+  }
+
   h2 {
     font-size: 60px;
     text-align: center;
@@ -848,6 +888,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
   }
 
   > div:nth-child(2) {
@@ -857,8 +899,18 @@ header {
     align-items: center;
     flex-direction: column;
 
+    h2 {
+      @media (max-width: 605px) {
+        font-size: 50px;
+      }
+    }
+
     p {
       width: 600px;
+
+      @media (max-width: 605px) {
+        width: fit-content;
+      }
     }
 
     button {
@@ -878,6 +930,10 @@ header {
 .end {
   margin-top: 120px;
 
+  @media (max-width: 875px) {
+    margin-bottom: 200px;
+  }
+
   h2 {
     font-size: 52px;
     text-align: center;
@@ -887,6 +943,15 @@ header {
     background-clip: text;
     width: 600px;
     margin: auto;
+
+    @media (max-width: 675px) {
+      width: fit-content;
+      padding: 0 5px;
+    }
+
+    @media (max-width: 535px) {
+      font-size: 40px;
+    }
   }
 
   > div:nth-child(2) {
@@ -971,10 +1036,28 @@ footer {
   padding: 0 100px;
   position: relative;
 
+  @media (max-width: 875px) {
+    padding: 0 50px;
+  }
+
+  @media (max-width: 760px) {
+    padding: 0 10px;
+  }
+
+  @media (max-width: 685px) {
+    padding-left: 40px;
+  }
+
   > div:first-child {
     display: flex;
     justify-content: space-around;
     align-items: center;
+
+    @media (max-width: 685px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 50px;
+    }
 
     .logo {
       display: flex;
@@ -1011,6 +1094,10 @@ footer {
       position: absolute;
       right: 0;
       transform: translateY(-100px);
+
+      @media (max-width: 875px) {
+        transform: translateY(-120px);
+      }
     }
   }
 
@@ -1020,6 +1107,10 @@ footer {
     margin-top: 30px;
     margin-left: auto;
     margin-right: auto;
+
+    @media (max-width: 1215px) {
+      width: 90%;
+    }
   }
 
   > p {
