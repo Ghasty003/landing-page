@@ -85,6 +85,7 @@ nav {
     p {
         color: #3E4581;
         font-weight: 700;
+        font-family: 'Inter';
     }
 }
 
@@ -113,6 +114,7 @@ nav {
         font-size: 14px;
         cursor: pointer;
         color: #3E4581;
+        font-family: 'Poppins';
 
         &:first-child {
             background: linear-gradient(89.97deg, #AE67FA 1.84%, #F49867 102.67%), linear-gradient(106.23deg, #4EF0F0 0%, #05C580 100%);
@@ -134,6 +136,7 @@ button {
     width: 100px;
     height: 48px;
     color: white;
+    font-family: 'Gilroy-Bold';
 }
 
 svg {

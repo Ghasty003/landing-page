@@ -307,6 +307,11 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Inter');
+@import url('https://fonts.googleapis.com/css2?family=Poppins');
+@import url('https://fonts.cdnfonts.com/css/gilroy-bold');
+
+
 * {
   padding: 0;
   margin: 0;
@@ -314,7 +319,7 @@ onMounted(() => {
 }
 
 body {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Gilroy-Bold', sans-serif;
   background-color:white;
   overflow-x: hidden;
 }
@@ -325,15 +330,6 @@ body {
   top: 0;
   z-index: -10000;
 }
-
-// main {
-//   background-image: url("./assets/Lines.png");
-//   background-position: center;
-//   background-repeat: no-repeat;
-//   background-size: cover;
-//   background-origin: content-box;
-// }
-
 
 .bg_irr {
   width: 100%;
@@ -380,6 +376,7 @@ body {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     line-height: 88px;
+    font-family: 'Gilroy-Bold';
 
     @media (max-width: 541px) {
       font-size: 60px;
@@ -979,6 +976,7 @@ header {
 
   h2 {
     font-size: 52px;
+    font-family: 'Poppins';
     text-align: center;
     background: linear-gradient(89.97deg, #AE67FA 1.84%, #F49867 102.67%), #3E4581;
     -webkit-background-clip: text;
@@ -1120,6 +1118,7 @@ footer {
       p {
         color: #3E4581;
         font-weight: 700;
+        font-family: 'Inter';
       }
     }
 
@@ -1132,6 +1131,7 @@ footer {
       p {
         font-weight: 500;
         font-size: 14px;
+        font-family: 'Poppins';
         cursor: pointer;
         color: #3E4581;
       }
@@ -1175,6 +1175,7 @@ footer {
   > p {
     text-align: center;
     color: #ADADAD;
+    font-family: 'Inter';
     font-size: 12px;
     margin-top: 30px;
     margin-bottom: 20px;
