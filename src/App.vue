@@ -322,6 +322,10 @@ body {
   font-family: 'Gilroy-Bold', sans-serif;
   background-color:white;
   overflow-x: hidden;
+
+  > main, > section, > footer, > div {
+    overflow: hidden;
+  }
 }
 
 .bg {
