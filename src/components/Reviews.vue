@@ -34,6 +34,11 @@
     color: #3E4581;
     text-align-last: center;
     padding: 30px 33px;
+    margin: auto;
+
+    @media (max-width: 420px) {
+        width: 350px;
+    }
 }
 
 </style>
