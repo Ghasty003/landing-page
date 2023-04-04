@@ -891,6 +891,10 @@ header {
     padding: 60px 50px;
   }
 
+  @media (max-width: 460px) {
+    padding: 60px 30px;
+  }
+
   h2 {
     font-size: 60px;
     text-align: center;
@@ -917,6 +921,10 @@ header {
     align-items: center;
     flex-wrap: wrap;
     gap: 40px;
+
+    @media (max-width: 385px) {
+      justify-content: center;
+    }
   }
 
   > div:nth-child(2) {
@@ -930,6 +938,10 @@ header {
       @media (max-width: 605px) {
         font-size: 50px;
       }
+
+      @media (max-width: 460px) {
+        font-size: 40px;
+      }
     }
 
     p {
@@ -937,6 +949,10 @@ header {
 
       @media (max-width: 605px) {
         width: fit-content;
+      }
+
+      @media (max-width: 460px) {
+        font-size: 18px;
       }
     }
 
@@ -996,6 +1012,10 @@ header {
       top: 80px;
     }
     padding: 5px 10px;
+
+    @media (max-width: 475px) {
+      width: 320px;
+    }
 
     input {
       background: transparent;
@@ -1115,6 +1135,14 @@ footer {
         cursor: pointer;
         color: #3E4581;
       }
+
+      @media (max-width: 450px) {
+        gap: 30px;
+      }
+
+      @media (max-width: 370px) {
+        gap: 20px;
+      }
     }
 
     > img {
@@ -1124,6 +1152,10 @@ footer {
 
       @media (max-width: 875px) {
         transform: translateY(-120px);
+      }
+
+      @media (max-width: 380px) {
+        transform: translateY(-150px);
       }
     }
   }
