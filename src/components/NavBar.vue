@@ -30,6 +30,7 @@
 
 
 <script setup lang="ts">
+
 import { onMounted, ref } from "vue";
 
 
@@ -92,7 +93,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     gap: 60px;
-    transition: all 1s;
+    transition: all .8s;
 
     @media (max-width: 670px) {
         background: #E5E5E5;
