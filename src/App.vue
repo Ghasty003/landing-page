@@ -120,7 +120,7 @@
       <img src="./assets/Card2.png" alt="image">
       <img src="./assets/Card3.png" alt="image">
 
-      <img src="./assets/irregular2.png" alt="image">
+      <!-- <img src="./assets/irregular2.png" alt="image"> -->
     </div>
   </section>
 
